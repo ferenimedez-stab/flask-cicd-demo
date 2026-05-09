@@ -1,0 +1,573 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 45%, #0f3460 100%);
+    color: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+/* BEBI THEME - PASTEL PINK */
+body.theme-bebi {
+    background: linear-gradient(135deg, #fde2e4 0%, #fbcfe8 45%, #f5d0fe 100%);
+    color: #000000;
+}
+
+/* OTHER THEMES */
+body.theme-purple {
+    background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 45%, #3b1f5c 100%);
+    color: #ffffff;
+}
+
+body.theme-blue {
+    background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 45%, #082f49 100%);
+    color: #ffffff;
+}
+
+body.theme-teal {
+    background: linear-gradient(135deg, #134e4a 0%, #0f766e 45%, #0d3731 100%);
+    color: #ffffff;
+}
+
+body.theme-coral {
+    background: linear-gradient(135deg, #7c2d12 0%, #b45309 45%, #5b1f0a 100%);
+    color: #ffffff;
+}
+
+body.theme-lavender {
+    background: linear-gradient(135deg, #5b21b6 0%, #a78bfa 45%, #6d28d9 100%);
+    color: #ffffff;
+}
+
+/* background glow */
+.bg {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(100, 116, 139, 0.2), transparent 62%);
+    filter: blur(130px);
+    animation: float 6s ease-in-out infinite;
+    z-index: 0;
+}
+
+body.theme-bebi .bg {
+    background: radial-gradient(circle, rgba(244, 114, 182, 0.34), transparent 62%);
+}
+
+body.theme-purple .bg {
+    background: radial-gradient(circle, rgba(147, 51, 234, 0.35), transparent 62%);
+}
+
+body.theme-blue .bg {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 62%);
+}
+
+body.theme-teal .bg {
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.3), transparent 62%);
+}
+
+body.theme-coral .bg {
+    background: radial-gradient(circle, rgba(248, 113, 113, 0.3), transparent 62%);
+}
+
+body.theme-lavender .bg {
+    background: radial-gradient(circle, rgba(196, 181, 253, 0.3), transparent 62%);
+}
+
+.doodles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    display: none;
+}
+
+/* Show doodles when body has a theme */
+body.theme-bebi .doodles.theme-bebi,
+body.theme-purple .doodles.theme-purple,
+body.theme-blue .doodles.theme-blue,
+body.theme-teal .doodles.theme-teal,
+body.theme-coral .doodles.theme-coral,
+body.theme-lavender .doodles.theme-lavender {
+    display: block;
+}
+
+.doodle {
+    position: fixed;
+    font-size: 34px;
+    color: rgba(255, 255, 255, 0.25);
+    text-shadow: 0 0 14px rgba(0, 0, 0, 0.35);
+    animation: doodleFloat 10s ease-in-out infinite;
+    user-select: none;
+    z-index: 0;
+}
+
+body.theme-bebi .doodle {
+    color: rgba(0, 0, 0, 0.32);
+    text-shadow: 0 0 14px rgba(255, 255, 255, 0.45);
+}
+
+.doodle-1 {
+    top: 10%;
+    left: 8%;
+    font-size: 36px;
+    animation-duration: 11s;
+}
+
+.doodle-2 {
+    top: 18%;
+    right: 12%;
+    font-size: 40px;
+    animation-duration: 13s;
+    animation-delay: -2s;
+}
+
+.doodle-3 {
+    bottom: 20%;
+    left: 12%;
+    font-size: 34px;
+    animation-duration: 12s;
+    animation-delay: -4s;
+}
+
+.doodle-4 {
+    top: 62%;
+    right: 10%;
+    font-size: 32px;
+    animation-duration: 9s;
+    animation-delay: -1s;
+}
+
+.doodle-5 {
+    top: 42%;
+    left: 18%;
+    font-size: 30px;
+    animation-duration: 14s;
+    animation-delay: -5s;
+}
+
+.doodle-6 {
+    bottom: 12%;
+    right: 22%;
+    font-size: 38px;
+    animation-duration: 15s;
+    animation-delay: -3s;
+}
+
+.doodle-7 {
+    top: 28%;
+    left: 42%;
+    font-size: 44px;
+    animation-duration: 16s;
+    animation-delay: -6s;
+}
+
+.doodle-8 {
+    top: 72%;
+    left: 28%;
+    font-size: 36px;
+    animation-duration: 12s;
+    animation-delay: -2.5s;
+}
+
+.doodle-9 {
+    top: 8%;
+    right: 28%;
+    font-size: 42px;
+    animation-duration: 17s;
+    animation-delay: -7s;
+}
+
+.doodle-10 {
+    bottom: 28%;
+    right: 34%;
+    font-size: 30px;
+    animation-duration: 14s;
+    animation-delay: -4.5s;
+}
+
+.doodle-11 {
+    top: 15%;
+    left: 42%;
+    font-size: 38px;
+    animation-duration: 13s;
+    animation-delay: -3.5s;
+}
+
+.doodle-12 {
+    top: 35%;
+    right: 8%;
+    font-size: 32px;
+    animation-duration: 11s;
+    animation-delay: -1.5s;
+}
+
+.doodle-13 {
+    bottom: 35%;
+    left: 28%;
+    font-size: 36px;
+    animation-duration: 15s;
+    animation-delay: -5.5s;
+}
+
+.doodle-14 {
+    top: 52%;
+    right: 32%;
+    font-size: 34px;
+    animation-duration: 12s;
+    animation-delay: -2.5s;
+}
+
+.doodle-15 {
+    bottom: 15%;
+    left: 48%;
+    font-size: 28px;
+    animation-duration: 14s;
+    animation-delay: -3s;
+}
+
+.doodle-16 {
+    top: 8%;
+    right: 42%;
+    font-size: 40px;
+    animation-duration: 16s;
+    animation-delay: -6.5s;
+}
+
+.doodle-17 {
+    top: 65%;
+    right: 18%;
+    font-size: 32px;
+    animation-duration: 11s;
+    animation-delay: -2s;
+}
+
+.doodle-18 {
+    bottom: 10%;
+    left: 18%;
+    font-size: 36px;
+    animation-duration: 13s;
+    animation-delay: -4s;
+}
+
+.doodle-19 {
+    top: 45%;
+    left: 68%;
+    font-size: 34px;
+    animation-duration: 15s;
+    animation-delay: -5s;
+}
+
+.doodle-20 {
+    bottom: 40%;
+    right: 6%;
+    font-size: 30px;
+    animation-duration: 12s;
+    animation-delay: -3.5s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(40px); }
+}
+
+@keyframes doodleFloat {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+        opacity: 0.34;
+    }
+    25% {
+        transform: translate3d(18px, -12px, 0) rotate(10deg) scale(1.08);
+        opacity: 0.42;
+    }
+    50% {
+        transform: translate3d(-8px, 16px, 0) rotate(-8deg) scale(0.96);
+        opacity: 0.3;
+    }
+    75% {
+        transform: translate3d(-14px, -8px, 0) rotate(6deg) scale(1.04);
+        opacity: 0.4;
+    }
+}
+
+.container {
+    z-index: 1;
+    width: 420px;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+}
+
+body.theme-bebi .container {
+    color: #000000;
+}
+
+/* TITLE */
+.title {
+    font-size: 38px;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+body.theme-bebi .title {
+    color: #000000;
+}
+
+.subtitle {
+    opacity: 1;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body.theme-bebi .subtitle {
+    color: #000000;
+}
+
+/* GREETING (OUTSIDE FORM) */
+.greeting-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 18px;
+    border-radius: 14px;
+    font-size: 22px;
+    font-weight: 600;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    margin-bottom: 20px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+}
+
+body.theme-bebi .greeting-card {
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(190, 24, 93, 0.2);
+    box-shadow: 0 14px 30px rgba(244, 114, 182, 0.16);
+}
+
+.greeting-card span {
+    color: #ffffff;
+}
+
+body.theme-bebi .greeting-card span {
+    color: #000000;
+}
+
+/* FORM CARD */
+.form-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 25px;
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.25);
+}
+
+body.theme-bebi .form-card {
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(190, 24, 93, 0.18);
+    box-shadow: 0 18px 38px rgba(244, 114, 182, 0.18);
+}
+
+/* LABEL */
+label {
+    display: block;
+    text-align: left;
+    font-size: 13px;
+    opacity: 1;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 8px;
+}
+
+body.theme-bebi label {
+    color: #000000;
+}
+
+/* INPUT FIX (WIDTH CONTROLLED) */
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    outline: none;
+    margin-bottom: 15px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+body.theme-bebi input {
+    background: rgba(255, 255, 255, 0.98);
+    color: #000000;
+    border: 1px solid rgba(190, 24, 93, 0.24);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+body.theme-bebi input::placeholder {
+    color: #333333;
+}
+
+input:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+body.theme-bebi input:focus {
+    border-color: rgba(190, 24, 93, 0.52);
+    box-shadow: 0 0 0 4px rgba(244, 114, 182, 0.18);
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+    box-shadow: none;
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+body.theme-bebi button {
+    background: linear-gradient(135deg, #f472b6, #f43f5e);
+    box-shadow: 0 12px 24px rgba(244, 114, 182, 0.28);
+    border: none;
+    color: white;
+}
+
+body.theme-bebi button:hover {
+    transform: scale(1.03);
+    opacity: 0.96;
+    background: linear-gradient(135deg, #f472b6, #f43f5e);
+}
+
+body.theme-purple button {
+    background: linear-gradient(135deg, #a855f7, #9333ea);
+    box-shadow: 0 12px 24px rgba(147, 51, 234, 0.35);
+    border: none;
+    color: white;
+}
+
+body.theme-purple button:hover {
+    transform: scale(1.03);
+    opacity: 0.96;
+}
+
+body.theme-blue button {
+    background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.3);
+    border: none;
+    color: white;
+}
+
+body.theme-blue button:hover {
+    transform: scale(1.03);
+    opacity: 0.96;
+}
+
+body.theme-teal button {
+    background: linear-gradient(135deg, #14b8a6, #06b6d4);
+    box-shadow: 0 12px 24px rgba(45, 212, 191, 0.3);
+    border: none;
+    color: white;
+}
+
+body.theme-teal button:hover {
+    transform: scale(1.03);
+    opacity: 0.96;
+}
+
+body.theme-coral button {
+    background: linear-gradient(135deg, #f97316, #fb923c);
+    box-shadow: 0 12px 24px rgba(248, 113, 113, 0.3);
+    border: none;
+    color: white;
+}
+
+body.theme-coral button:hover {
+    transform: scale(1.03);
+    opacity: 0.96;
+}
+
+body.theme-lavender button {
+    background: linear-gradient(135deg, #c084fc, #d8b4fe);
+    box-shadow: 0 12px 24px rgba(196, 181, 253, 0.3);
+    border: none;
+    color: white;
+}
+
+body.theme-lavender button:hover {
+    transform: scale(1.03);
+    opacity: 0.96;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+    z-index: 10;
+}
+
+body.theme-bebi .back-btn {
+    border: 1px solid rgba(190, 24, 93, 0.18);
+    background: rgba(255, 255, 255, 0.82);
+    color: #000000;
+    box-shadow: 0 10px 24px rgba(244, 114, 182, 0.18);
+}
+
+.back-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(255, 255, 255, 0.15);
+}
+
+body.theme-bebi .back-btn:hover {
+    color: #000000;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 14px 30px rgba(244, 114, 182, 0.24);
+}
+
+.back-btn:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+body.theme-bebi .back-btn:focus-visible {
+    outline: 2px solid #000000;
+}

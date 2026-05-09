@@ -1,0 +1,62 @@
+# ======================
+# Python
+# ======================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# ======================
+# Virtual Environments
+# ======================
+venv/
+.venv/
+env/
+ENV/
+cicdEnv/
+
+# ======================
+# Environment Variables
+# ======================
+.env
+.env.*
+!.env.example
+
+# ======================
+# Flask
+# ======================
+instance/
+*.log
+
+# ======================
+# Pytest / Testing
+# ======================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ======================
+# IDEs / Editors
+# ======================
+.vscode/
+.idea/
+*.swp
+
+# ======================
+# OS Files
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# Docker
+# ======================
+docker-compose.override.yml
+
+# ======================
+# Git temporary files
+# ======================
+*.orig
+*.rej

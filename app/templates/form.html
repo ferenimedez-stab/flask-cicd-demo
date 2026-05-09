@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="bg"></div>
+
+<div class="container">
+    {% if name %}
+    <a href="/" class="back-btn" title="Go back">&lt;</a>
+    {% endif %}
+
+    <!-- HEADER (HIDDEN WHEN GREETING SHOWS) -->
+    {% if not name %}
+    <h1 class="title">Welcome 👋</h1>
+    <p class="subtitle">Enter your name to continue</p>
+    {% endif %}
+
+    <!-- GREETING (OUTSIDE FORM NOW) -->
+    {% if name %}
+    <div id="themed-content" data-theme="{{ name|lower }}">
+        <!-- BEBI (PINK) DOODLES -->
+        <div class="doodles theme-bebi" aria-hidden="true">
+            <span class="doodle doodle-1">✿</span>
+            <span class="doodle doodle-2">✦</span>
+            <span class="doodle doodle-3">♡</span>
+            <span class="doodle doodle-4">✧</span>
+            <span class="doodle doodle-5">◌</span>
+            <span class="doodle doodle-6">✿</span>
+            <span class="doodle doodle-7">✦</span>
+            <span class="doodle doodle-8">♡</span>
+            <span class="doodle doodle-9">✿</span>
+            <span class="doodle doodle-10">✧</span>
+            <span class="doodle doodle-11">✿</span>
+            <span class="doodle doodle-12">✦</span>
+            <span class="doodle doodle-13">♡</span>
+            <span class="doodle doodle-14">✧</span>
+            <span class="doodle doodle-15">◌</span>
+            <span class="doodle doodle-16">✿</span>
+            <span class="doodle doodle-17">✦</span>
+            <span class="doodle doodle-18">♡</span>
+            <span class="doodle doodle-19">✿</span>
+            <span class="doodle doodle-20">✧</span>
+        </div>
+
+        <!-- PURPLE DOODLES -->
+        <div class="doodles theme-purple" aria-hidden="true">
+            <span class="doodle doodle-1">✦</span>
+            <span class="doodle doodle-2">⭐</span>
+            <span class="doodle doodle-3">✨</span>
+            <span class="doodle doodle-4">✦</span>
+            <span class="doodle doodle-5">⭐</span>
+            <span class="doodle doodle-6">✨</span>
+            <span class="doodle doodle-7">✦</span>
+            <span class="doodle doodle-8">⭐</span>
+            <span class="doodle doodle-9">✨</span>
+            <span class="doodle doodle-10">✦</span>
+        </div>
+
+        <!-- BLUE DOODLES -->
+        <div class="doodles theme-blue" aria-hidden="true">
+            <span class="doodle doodle-1">~</span>
+            <span class="doodle doodle-2">◇</span>
+            <span class="doodle doodle-3">💧</span>
+            <span class="doodle doodle-4">~</span>
+            <span class="doodle doodle-5">◇</span>
+            <span class="doodle doodle-6">💧</span>
+            <span class="doodle doodle-7">~</span>
+            <span class="doodle doodle-8">◇</span>
+            <span class="doodle doodle-9">💧</span>
+            <span class="doodle doodle-10">~</span>
+        </div>
+
+        <!-- TEAL DOODLES -->
+        <div class="doodles theme-teal" aria-hidden="true">
+            <span class="doodle doodle-1">◉</span>
+            <span class="doodle doodle-2">◎</span>
+            <span class="doodle doodle-3">⊙</span>
+            <span class="doodle doodle-4">◉</span>
+            <span class="doodle doodle-5">◎</span>
+            <span class="doodle doodle-6">⊙</span>
+            <span class="doodle doodle-7">◉</span>
+            <span class="doodle doodle-8">◎</span>
+            <span class="doodle doodle-9">⊙</span>
+            <span class="doodle doodle-10">◉</span>
+        </div>
+
+        <!-- CORAL DOODLES -->
+        <div class="doodles theme-coral" aria-hidden="true">
+            <span class="doodle doodle-1">🔥</span>
+            <span class="doodle doodle-2">✚</span>
+            <span class="doodle doodle-3">🔥</span>
+            <span class="doodle doodle-4">✚</span>
+            <span class="doodle doodle-5">🔥</span>
+            <span class="doodle doodle-6">✚</span>
+            <span class="doodle doodle-7">🔥</span>
+            <span class="doodle doodle-8">✚</span>
+            <span class="doodle doodle-9">🔥</span>
+            <span class="doodle doodle-10">✚</span>
+        </div>
+
+        <!-- LAVENDER DOODLES -->
+        <div class="doodles theme-lavender" aria-hidden="true">
+            <span class="doodle doodle-1">☾</span>
+            <span class="doodle doodle-2">◑</span>
+            <span class="doodle doodle-3">☽</span>
+            <span class="doodle doodle-4">☾</span>
+            <span class="doodle doodle-5">◑</span>
+            <span class="doodle doodle-6">☽</span>
+            <span class="doodle doodle-7">☾</span>
+            <span class="doodle doodle-8">◑</span>
+            <span class="doodle doodle-9">☽</span>
+            <span class="doodle doodle-10">☾</span>
+        </div>
+    </div>
+
+    <div class="greeting-card">
+        Hello, <span>{{ name }}</span> ✨
+    </div>
+    {% else %}
+    <!-- FORM -->
+    <form method="POST" class="form-card">
+        <label>Name</label>
+
+        <input type="text" name="name" placeholder="Enter your name..." required>
+
+        <button type="submit">Submit</button>
+    </form>
+    {% endif %}
+
+</div>
+
+<script>
+    // Apply theme and show appropriate doodles after submit
+    function initializeTheme() {
+        const themedContent = document.getElementById('themed-content');
+        
+        if (!themedContent) {
+            console.log('No themed-content element found (landing page)');
+            return;
+        }
+        
+        const themeName = themedContent.getAttribute('data-theme');
+        console.log('✓ Theme name from data-theme:', themeName);
+        
+        if (!themeName || themeName.trim() === '') {
+            console.log('✗ Theme name is empty');
+            return;
+        }
+        
+        let finalTheme = '';
+        
+        // Determine the theme: "bebi" stays pink, anything else gets random dark
+        if (themeName.toLowerCase() === 'bebi') {
+            finalTheme = 'theme-bebi';
+            console.log('→ Detected bebi: using pink theme');
+        } else {
+            const darkThemes = ['theme-purple', 'theme-blue', 'theme-teal', 'theme-coral', 'theme-lavender'];
+            finalTheme = darkThemes[Math.floor(Math.random() * darkThemes.length)];
+            console.log('→ Non-bebi name, random dark theme:', finalTheme);
+        }
+        
+        // Apply the theme class to body
+        document.body.className = finalTheme;
+        console.log('✓ Body class set to:', finalTheme);
+        
+        // Hide all doodles first
+        const allDoodles = document.querySelectorAll('.doodles');
+        console.log('✓ Found', allDoodles.length, 'doodle containers');
+        allDoodles.forEach(d => d.style.display = 'none');
+        
+        // Show only the matching doodles
+        const selector = `.doodles.${finalTheme}`;
+        const matchingDoodles = document.querySelector(selector);
+        
+        if (matchingDoodles) {
+            matchingDoodles.style.display = 'block';
+
+            if (finalTheme === 'theme-bebi') {
+                const doodleItems = Array.from(matchingDoodles.querySelectorAll('.doodle'));
+                const symbols = ['✿', '✦', '♡', '✧', '◌'];
+                let previousSymbol = '';
+
+                doodleItems.forEach((item) => {
+                    const availableSymbols = symbols.filter(symbol => symbol !== previousSymbol);
+                    const nextSymbol = availableSymbols[Math.floor(Math.random() * availableSymbols.length)];
+                    item.textContent = nextSymbol;
+                    previousSymbol = nextSymbol;
+                });
+            }
+
+            console.log('✓ Doodles displayed:', finalTheme);
+        } else {
+            console.warn('✗ Could not find doodles with selector:', selector);
+        }
+    }
+    
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeTheme);
+    } else {
+        initializeTheme();
+    }
+</script>
+</body>
+</html>
