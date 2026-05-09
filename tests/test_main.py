@@ -18,7 +18,7 @@ def test_home_get(client):
 def test_home_post(client):
     response = client.post("/", data={"name": "Alice"})
     assert response.status_code == 200
-    assert b"Alice" in response.data
+    assert b"This will fail!" in response.data
 
 
 def test_health(client):
