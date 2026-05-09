@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
@@ -34,12 +34,12 @@ jobs:
   build-docker:
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
-    needs: check-code                    # Only runs if Job 1 passes
-    if: github.event_name == 'push'      # Skip on pull requests
+    needs: check-code
+    if: github.event_name == 'push'
 
     permissions:
       contents: read
-      packages: write                    # Required to push to GHCR
+      packages: write
 
     steps:
       - name: Get the code
@@ -56,3 +56,41 @@ jobs:
         run: |
           docker build -t ghcr.io/${{ github.repository }}:latest .
           docker push ghcr.io/${{ github.repository }}:latest
+
+  # ── JOB 3: Deploy to Server ────────────────────────
+  deploy:
+    name: Deploy to Server
+    runs-on: ubuntu-latest
+    needs: build-docker
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            docker pull ghcr.io/${{ github.repository }}:latest
+            docker stop flask-app || true
+            docker rm flask-app || true
+            docker run -d \
+              --name flask-app \
+              --restart unless-stopped \
+              -p 80:5000 \
+              ghcr.io/${{ github.repository }}:latest
+            echo "Deployed at $(date)"
+
+      - name: Verify deployment
+        run: |
+          echo "Waiting for app to start..."
+          sleep 15
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://${{ secrets.SERVER_HOST }}/health)
+          if [ "$STATUS" = "200" ]; then
+            echo "App is live and healthy!"
+          else
+            echo "Health check failed. Status: $STATUS"
+            exit 1
+          fi
